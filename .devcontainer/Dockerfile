@@ -7,6 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt-get install -y --no-install-recommends \
   less \
   git \
+  tree \
   procps \
   sudo \
   fzf \
