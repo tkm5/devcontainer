@@ -36,7 +36,10 @@
     }
   },
   "features": {},
-  // "remoteUser": "ubuntu",
+  "remoteUser": "ubuntu",
+  "mounts": [
+    "source=${localEnv:HOME}/.gemini,target=/home/ubuntu/.gemini,type=bind,consistency=cached"
+  ],
   "postCreateCommand": "",
   "waitFor": "postStartCommand"
 }
