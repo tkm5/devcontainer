@@ -4,7 +4,7 @@ ARG TZ=Asia/Tokyo
 ENV TZ="$TZ"
 
 RUN DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt-get install -y --no-install-recommends \
+RUN apt update && apt install -y --no-install-recommends \
   less \
   git \
   tree \
