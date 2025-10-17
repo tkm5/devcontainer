@@ -3,28 +3,24 @@ FROM python:3.13-slim
 ARG TZ=Asia/Tokyo
 ENV TZ="$TZ"
 
-RUN DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt install -y --no-install-recommends \
-  less \
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && \
+  apt install -y --no-install-recommends \
+  sudo \
+  zsh \
+  curl \
+  wget \
   git \
+  gh \
+  fzf \
+  less \
   tree \
   procps \
-  sudo \
-  fzf \
-  zsh \
   man-db \
-  wget \
-  unzip \
-  gnupg2 \
-  gh \
-  iptables \
-  ipset \
-  iproute2 \
-  dnsutils \
-  aggregate \
-  jq \
-  vim \
-  && apt clean && rm -rf /var/lib/apt/lists/*
+  unzip && \
+  apt clean
 
 # Define the user
 ARG USERNAME=ubuntu
