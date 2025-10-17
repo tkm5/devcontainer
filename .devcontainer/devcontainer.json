@@ -36,9 +36,9 @@
     }
   },
   "features": {},
-  "remoteUser": "ubuntu",
+  "remoteUser": "devcontainer",
   "mounts": [
-    "source=${localEnv:HOME}/.gemini,target=/home/ubuntu/.gemini,type=bind,consistency=cached"
+    "source=${localEnv:HOME}/.gemini,target=/home/devcontainer/.gemini,type=bind,consistency=cached"
   ],
   "postCreateCommand": "",
   "waitFor": "postStartCommand"

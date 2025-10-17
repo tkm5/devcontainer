@@ -1,4 +1,4 @@
-FROM python:3.13-slim
+FROM ubuntu:noble
 
 ARG TZ=Asia/Tokyo
 ENV TZ="$TZ"
@@ -23,7 +23,7 @@ RUN apt update && \
   apt clean
 
 # Define the user
-ARG USERNAME=ubuntu
+ARG USERNAME=devcontainer
 RUN adduser --disabled-password --gecos '' ${USERNAME}
 RUN echo "${USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME}
 
@@ -37,7 +37,7 @@ RUN wget -qO nodesource_setup.sh https://deb.nodesource.com/setup_${NODE_VERSION
 RUN mkdir -p /usr/local/share/npm-global && \
     chown -R ${USERNAME}:${USERNAME} /usr/local/share/npm-global
 ENV NPM_CONFIG_PREFIX=/usr/local/share/npm-global
-ENV PATH=$PATH:/usr/local/share/npm-global/bin
+ENV PATH="/usr/local/share/npm-global/bin:${PATH}"
 
 # Set `DEVCONTAINER` environment variable to help with orientation
 ENV DEVCONTAINER=true
@@ -45,7 +45,7 @@ ENV DEVCONTAINER=true
 ARG GIT_DELTA_VERSION=0.18.2
 RUN ARCH=$(dpkg --print-architecture) && \
   wget "https://github.com/dandavison/delta/releases/download/${GIT_DELTA_VERSION}/git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
-  sudo dpkg -i "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
+  dpkg -i "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
   rm "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb"
 
 USER ${USERNAME}
@@ -67,6 +67,6 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 ARG GEMINI_CLI_VERSION=latest
 RUN npm install -g @google/gemini-cli@${GEMINI_CLI_VERSION}
 
-# Install python libraries
-COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+# Install uv (Python will be installed and managed with uv)
+COPY --from=ghcr.io/astral-sh/uv:0.8.15 /uv /uvx /bin/
+RUN echo 'eval "$(uv generate-shell-completion zsh)"' >> ~/.zshrc
