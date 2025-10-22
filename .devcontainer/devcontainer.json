@@ -9,6 +9,7 @@
         "google.gemini-cli-vscode-ide-companion",
         "anysphere.cursorpyright",
         "ms-python.black-formatter",
+        "formulahendry.code-runner",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "eamodio.gitlens",
