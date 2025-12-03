@@ -22,6 +22,9 @@ RUN apt update && \
   unzip && \
   apt clean
 
+# Install Font
+RUN wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+
 # Define the user
 ARG USERNAME=devcontainer
 RUN adduser --disabled-password --gecos '' ${USERNAME}

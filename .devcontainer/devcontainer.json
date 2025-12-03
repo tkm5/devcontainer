@@ -25,7 +25,7 @@
         "editor.codeActionsOnSave": {
           "source.fixAll.eslint": "explicit"
         },
-        "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+        // "terminal.integrated.fontFamily": "MesloLGS NF",
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "zsh": {
@@ -39,7 +39,11 @@
   "features": {},
   "remoteUser": "devcontainer",
   "mounts": [
-    "source=${localEnv:HOME}/.gemini,target=/home/devcontainer/.gemini,type=bind,consistency=cached"
+    "source=${localEnv:HOME}/.gemini,target=/home/devcontainer/.gemini,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devcontainer/.zshrc,target=/home/devcontainer/.zshrc,type=bind,consistency=cached"
+    // "source=${localEnv:HOME}/.p10k.zsh,target=/home/devcontainer/.p10k.zsh,type=bind,consistency=cached",
+    // "source=${localEnv:HOME}/.oh-my-zsh,target=/home/devcontainer/.oh-my-zsh,type=bind,consistency=cached",
+    // "source=${localEnv:HOME}/.dotfiles,target=/home/devcontainer/.dotfiles,type=bind,consistency=cached"
   ],
   "postCreateCommand": "",
   "waitFor": "postStartCommand"
