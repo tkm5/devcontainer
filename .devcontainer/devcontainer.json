@@ -40,6 +40,7 @@
   "remoteUser": "devcontainer",
   "mounts": [
     "source=${localEnv:HOME}/.gemini,target=/home/devcontainer/.gemini,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.tmux.conf,target=/home/devcontainer/.tmux.conf,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/.devcontainer/.zshrc,target=/home/devcontainer/.zshrc,type=bind,consistency=cached"
     // "source=${localEnv:HOME}/.p10k.zsh,target=/home/devcontainer/.p10k.zsh,type=bind,consistency=cached",
     // "source=${localEnv:HOME}/.oh-my-zsh,target=/home/devcontainer/.oh-my-zsh,type=bind,consistency=cached",
