@@ -12,6 +12,7 @@ RUN apt update && \
   zsh \
   curl \
   wget \
+  tmux \
   git \
   gh \
   fzf \

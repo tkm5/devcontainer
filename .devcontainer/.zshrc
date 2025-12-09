@@ -33,6 +33,11 @@ source $ZSH/oh-my-zsh.sh
 
 export HISTFILE=/commandhistory/.zsh_history
 
+#------------------
+# alias settings
+#------------------
+alias t="tmux"
+
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs status)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
